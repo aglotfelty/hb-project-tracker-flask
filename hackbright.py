@@ -31,6 +31,8 @@ def get_student_by_github(github):
     row = db_cursor.fetchone()
     print "Student: %s %s\nGithub account: %s" % (row[0], row[1], row[2])
 
+    return row
+
 
 def make_new_student(first_name, last_name, github):
     """Add a new student and print confirmation.
@@ -85,6 +87,21 @@ def get_grade_by_github_title(github, title):
     row = db_cursor.fetchone()
 
     print "%s %s's grade on %s is %s." % (row[0], row[1], title, row[2])
+
+
+def get_grades_by_github(github):
+    """Print grade student received for a project."""
+
+    QUERY = """
+            SELECT project_title, grade
+                FROM grades
+                WHERE student_github = :github
+            """
+
+    db_cursor = db.session.execute(QUERY, {'github': github})
+    rows = db_cursor.fetchall()
+
+    return rows
 
 
 def assign_grade(github, title, grade):
