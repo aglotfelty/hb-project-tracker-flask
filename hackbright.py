@@ -105,6 +105,22 @@ def get_grades_by_github(github):
 
     return rows
 
+def get_grades_by_project(project):
+    """Return students and grades they received for given project."""
+
+    QUERY = """
+            SELECT s.first_name, s.last_name, s.github, g.grade
+                FROM students AS s
+                JOIN grades AS g
+                ON (s.github=g.student_github)
+                WHERE g.project_title = :project
+            """
+
+    db_cursor = db.session.execute(QUERY, {'project': project})
+    rows = db_cursor.fetchall()
+
+    return rows
+
 
 def assign_grade(github, title, grade):
     """Assign a student a grade on an assignment and print a confirmation."""

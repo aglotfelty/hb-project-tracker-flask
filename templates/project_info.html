@@ -11,5 +11,18 @@
       <b>Max Grade:</b> {{ max_grade }}
     </p>
   {% endwith %}
+
+  {% if student_grades %}
+  <h3>Student and Grades for this project:</h3>
+  <ul>
+    {% for first_name, last_name, github, grade in student_grades %}
+      <li>
+        <a href="/student?github={{ github }}">{{ first_name }} {{ last_name }}</a>: {{ grade }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
 </body>
 </html>

@@ -61,10 +61,12 @@ def display_project_info():
     """
 
     title = request.args.get("title")
-
+    
     project_info = hackbright.get_project_by_title(title)
+    student_grades = hackbright.get_grades_by_project(title)
 
-    return render_template("project_info.html", project_info=project_info)
+    return render_template("project_info.html", project_info=project_info,
+                                                student_grades=student_grades)
 
 
 if __name__ == "__main__":
