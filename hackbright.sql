@@ -153,7 +153,6 @@ ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq':
 
 COPY grades (id, student_github, project_title, grade) FROM stdin;
 1	jhacks	Markov	10
-2	jhacks	Blockly	2
 3	sdevelops	Markov	50
 4	sdevelops	Blockly	100
 5	sdevelops	Cat Counter	45
@@ -163,6 +162,8 @@ COPY grades (id, student_github, project_title, grade) FROM stdin;
 9	jhacks	Cat Counter	20
 10	cjones	Blockly	23
 11	cjones	Pizza Maker	50
+12	mcat	Blockly	20
+2	jhacks	Blockly	50
 \.
 
 
@@ -170,7 +171,7 @@ COPY grades (id, student_github, project_title, grade) FROM stdin;
 -- Name: grades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
 --
 
-SELECT pg_catalog.setval('grades_id_seq', 11, true);
+SELECT pg_catalog.setval('grades_id_seq', 12, true);
 
 
 --
@@ -183,6 +184,7 @@ COPY projects (id, title, description, max_grade) FROM stdin;
 3	Cat Counter	Counts the number of cats in your alley	30
 4	Pizza Maker	It makes-a da pizza	100
 5	Rain Finder	Track drops from miles away	43
+6	Find Spot	Help Spot's owner find him! He is lost and so sad, so you better find him quickly. Also please feed him, as he will be quite hungry.	9000000
 \.
 
 
@@ -190,7 +192,7 @@ COPY projects (id, title, description, max_grade) FROM stdin;
 -- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
 --
 
-SELECT pg_catalog.setval('projects_id_seq', 5, true);
+SELECT pg_catalog.setval('projects_id_seq', 6, true);
 
 
 --
@@ -201,6 +203,10 @@ COPY students (first_name, last_name, github) FROM stdin;
 Jane	Hacker	jhacks
 Sarah	Developer	sdevelops
 charlie	jones	cjones
+George	Clooney	gclooney
+Jack	Black	jblack
+Meow	Cat	mcat
+Silly	Goose	sgoose
 \.
 
 

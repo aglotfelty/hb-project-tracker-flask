@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Tracker{% endblock %}
+
+{% block content %}
+  <h1>Welcome to the Project Tracker</h1>
+  {% if students %}
+    <h2>Students</h2>
+    <ul>
+      {% for first_name, last_name, github in students %}
+          <li>
+            <a href="/student?github={{ github }}">{{ first_name }} {{ last_name}}</a>
+          </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if projects %}
+    <h2>Projects</h2>
+    <ul>
+      {% for project in projects %}
+          <li>
+            <a href="/project?title={{ project[0] }}">{{ project[0] }}</a>
+          </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <a href="/project-add">Add a new project</a></br>
+  <a href="/student-add">Add a new student</a></br>
+  <a href="/student-search">Search for a student</a>
+
+{% endblock %}
