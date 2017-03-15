@@ -71,6 +71,8 @@ def get_project_by_title(title):
     print "Description: %s" % row[1]
     print "Max Grade: %s" % row[2]
 
+    return row
+
 
 def get_grade_by_github_title(github, title):
     """Print grade student received for a project."""
