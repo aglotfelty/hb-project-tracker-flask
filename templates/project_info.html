@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <title>Project Info</title>
+</head>
+<body>
+  {% with title, description, max_grade = project_info %}
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <p>
+      <b>Max Grade:</b> {{ max_grade }}
+    </p>
+  {% endwith %}
+</body>
+</html>
